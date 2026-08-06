@@ -1,8 +1,103 @@
 # 🏔️ Deep Learning para Negocios - Caso Los Andes Market
 
-## 📋 Descripción del Proyecto
+## 🔬 Proyecto de Investigación Científica
 
-Proyecto educativo de **Inteligencia Artificial aplicada a Negocios** utilizando Deep Learning (TensorFlow, Keras, PySpark) para análisis predictivo de series temporales con **datos georeferenciados**.
+**Investigación científica** sobre la aplicación de **Redes Neuronales Recurrentes (RNN)** para predicción de series temporales en contextos empresariales, utilizando Deep Learning (TensorFlow, Keras, PySpark) con **datos georeferenciados**.
+
+---
+
+## 🎯 Problema de Investigación
+
+¿Qué parámetros y arquitectura de RNN (LSTM, GRU, etc.) ofrece un mejor desempeño en la predicción de series temporales en un contexto empresarial?
+
+### Preguntas Específicas
+
+1. ¿Cuál es la combinación óptima de hiperparámetros (tasa de aprendizaje, tamaño de lote, número de capas ocultas, etc.) para entrenar modelos RNN en series temporales de negocios?
+2. ¿Cómo se compara el desempeño de las RNN con modelos estadísticos tradicionales?
+3. ¿Qué arquitectura (LSTM vs GRU) es más efectiva para series con patrones no lineales y estacionalidad?
+
+---
+
+## 📚 Marco Teórico
+
+El marco teórico se centra en la aplicación de las **Redes Neuronales Recurrentes (RNN)** para el análisis de series temporales en el ámbito empresarial.
+
+### Fundamentos Teóricos
+
+1. **Series Temporales**
+   * Características: tendencia, estacionalidad, ciclos, componentes irregulares
+   * Importancia en la toma de decisiones empresariales
+   * Métodos clásicos: ARIMA, Suavizado Exponencial, Modelos de Regresión
+
+2. **Redes Neuronales Artificiales y Deep Learning**
+   * Ventajas sobre métodos tradicionales
+   * Capacidad de modelar relaciones no lineales complejas
+   * Aprendizaje automático de features
+
+3. **Redes Neuronales Recurrentes (RNN)**
+   * Arquitectura especializada para datos secuenciales
+   * Memoria de contexto temporal
+   * Problema del gradiente desvaneciente
+
+4. **Arquitecturas Avanzadas**
+   * **LSTM (Long Short-Term Memory)**: Celdas de memoria, puertas de control
+   * **GRU (Gated Recurrent Unit)**: Arquitectura simplificada, menor complejidad computacional
+   * Comparación de capacidades y eficiencia
+
+5. **Aplicaciones Empresariales**
+   * Predicción de ventas y demanda
+   * Gestión de la cadena de suministro
+   * Análisis financiero y forecasting
+   * Optimización de inventario
+
+6. **Desafíos y Tendencias Actuales**
+   * Interpretabilidad de modelos (XAI)
+   * Aprendizaje continuo y adaptación
+   * Integración de datos geoespaciales
+   * Escalabilidad en producción
+
+---
+
+## 🎯 Objetivos e Hipótesis
+
+### Objetivos Generales
+
+1. 🔬 **Evaluar la eficacia** de las redes neuronales recurrentes (RNN) en la predicción de series temporales en un contexto empresarial
+2. 📊 **Comparar el rendimiento** de las RNN con modelos estadísticos tradicionales
+3. 🏛️ **Identificar la arquitectura** de RNN más adecuada para el problema de investigación
+
+### Objetivos Específicos
+
+1. 🧠 **Desarrollar modelos** RNN (LSTM, GRU) para predecir series temporales de ventas
+2. 📊 **Evaluar la precisión** de los modelos utilizando MAE y otras métricas relevantes
+3. ⚙️ **Analizar la influencia** de diferentes hiperparámetros
+4. 🔄 **Evaluar la capacidad de generalización** de los modelos
+5. 🗺️ **Incorporar features geoespaciales** (H3, zona, distancia)
+
+### Hipótesis de Investigación
+
+**H1**: La arquitectura **LSTM presenta un mejor desempeño** en la predicción de series temporales con patrones no lineales y estacionalidad, comparado con GRU y modelos tradicionales.
+
+**H2**: El **ajuste de los hiperparámetros mejora significativamente la precisión** de las predicciones, medido mediante la reducción del MAE.
+
+**H3**: La **incorporación de features geoespaciales** (H3, zona, distancia al centro) mejora la capacidad predictiva de los modelos RNN en escenarios multi-sucursal.
+
+**H4**: Los modelos **RNN superan a los modelos estadísticos tradicionales** (ARIMA, Suavizado Exponencial) en series temporales con alta volatilidad y múltiples patrones estacionales.
+
+---
+
+## 📋 Metodología de Investigación
+
+### Diseño Experimental
+
+1. **Generación de datos** sintéticos georeferenciados (5 sucursales, 60 meses)
+2. **Preprocesamiento** y feature engineering
+3. **División temporal**: Train (70%), Validation (15%), Test (15%)
+4. **Desarrollo de modelos**: Baseline, RNN, LSTM, GRU
+5. **Búsqueda de hiperparámetros**
+6. **Evaluación**: MAE, RMSE, MAPE, R²
+7. **Análisis comparativo** y pruebas estadísticas
+8. **Validación cruzada temporal**
 
 ### Caso de Estudio: **Los Andes Market**
 
@@ -193,13 +288,30 @@ El notebook 01 genera y guarda en Delta Lake:
 
 ---
 
-## 👥 Audiencia
+## 👥 Audiencia y Aplicaciones
 
-Este proyecto está diseñado para:
-* 📚 **Estudiantes** de Data Science, ML, e IA aplicada a negocios
-* 💼 **Profesionales** de Retail, Supply Chain, y Business Analytics
-* 🧑‍💻 **Desarrolladores** interesados en series temporales y análisis geoespacial
-* 📊 **Analistas de Negocios** que buscan entender modelos predictivos
+### Audiencia Académica
+
+Esta investigación está dirigida a:
+* 🎓 **Investigadores** en Machine Learning y Deep Learning
+* 👨‍🎓 **Estudiantes de posgrado** (Maestría/Doctorado) en Data Science, Estadística, IA
+* 📚 **Académicos** interesados en aplicaciones de RNN a problemas de negocios
+* 🔬 **Profesionales de investigación** en ciencia de datos aplicada
+
+### Audiencia Profesional
+
+* 💼 **Data Scientists** en retail, e-commerce, y supply chain
+* 📊 **Analistas de Negocios** que buscan implementar modelos predictivos avanzados
+* 🧑‍💻 **Desarrolladores ML/AI** interesados en series temporales y análisis geoespacial
+* 📊 **Business Intelligence** teams que buscan integrar Deep Learning en sus pipelines
+
+### Aplicaciones Industriales
+
+* **Retail**: Predicción de demanda, optimización de inventario
+* **Supply Chain**: Forecasting de producción, gestión de logística
+* **Finanzas**: Predicción de series financieras, detección de anomalías
+* **E-commerce**: Predicción de tráfico web, análisis de demanda geolocalizada
+* **Manufactura**: Predicción de mantenimiento, optimización de producción
 
 ---
 
