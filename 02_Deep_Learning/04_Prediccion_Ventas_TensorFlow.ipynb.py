@@ -3,31 +3,47 @@
 # MAGIC %md
 # MAGIC # 🎯 Predicción de Ventas con LSTM Avanzado
 # MAGIC
-# MAGIC ## Modelo de Producción para Negocios - Sucursales Mendoza
+# MAGIC ## Investigación: Evaluación y Validación de Modelos RNN
 # MAGIC
-# MAGIC ### Objetivos
+# MAGIC ### Contexto de Investigación
 # MAGIC
-# MAGIC * Construir un modelo LSTM optimizado para predicción de ventas multi-sucursal
-# MAGIC * Implementar predicción multi-step (varios meses adelante)
-# MAGIC * Desnormalizar predicciones a valores reales
-# MAGIC * Generar visualizaciones geoespaciales para stakeholders
-# MAGIC * Calcular métricas de negocio (MAPE, RMSE, MAE) por sucursal y zona
-# MAGIC * Análisis de performance por ubicación geográfica (H3)
+# MAGIC Este notebook implementa la **fase de evaluación y validación** del estudio comparativo de arquitecturas RNN para pronóstico de series temporales empresariales georeferenciadas. Trabajamos con datos reales de **Los Andes Market** 🏔️, cadena de supermercados regional en Mendoza, Argentina.
 # MAGIC
-# MAGIC ### Flujo del Notebook
+# MAGIC ### Objetivos Científicos:
 # MAGIC
-# MAGIC 1. Cargar modelo y datos georeferenciados entrenados
-# MAGIC 2. Hacer predicciones y desnormalizar
-# MAGIC 3. Calcular métricas de negocio (global y por sucursal)
-# MAGIC 4. Visualizar resultados con mapas H3 para presentaciones
-# MAGIC 5. Predicción multi-step (forecasting futuro por zona)
-# MAGIC 6. Análisis de errores por estacionalidad y ubicación
+# MAGIC 1. **Evaluación Rigurosa de Modelos**
+# MAGIC    * Métricas cuantitativas: MAE, RMSE, MAPE, R²
+# MAGIC    * Comparación RNN vs LSTM vs GRU
+# MAGIC    * Análisis por sucursal y zona geográfica
 # MAGIC
-# MAGIC ### 🗺️ Dataset
+# MAGIC 2. **Predicción Multi-Step**
+# MAGIC    * Forecast a 1, 3, 6, 12 meses
+# MAGIC    * Degradación de performance con horizonte temporal
+# MAGIC    * Intervalos de confianza
 # MAGIC
-# MAGIC **5 sucursales reales en Mendoza, Argentina**:
-# MAGIC * Centro Comercial, Las Heras, Guaymallén, Godoy Cruz, Maipú
-# MAGIC * Con índices H3 (resoluciones 9/8/7) y features espaciales
+# MAGIC 3. **Análisis Geoespacial**
+# MAGIC    * Performance por índice H3 (resolución 7/8/9)
+# MAGIC    * Impacto de features espaciales en precisión
+# MAGIC    * Visualizaciones con mapas interactivos
+# MAGIC
+# MAGIC 4. **Interpretabilidad**
+# MAGIC    * Análisis de errores por estacionalidad
+# MAGIC    * Identificación de patrones mal capturados
+# MAGIC    * Recomendaciones para mejora
+# MAGIC
+# MAGIC ### Caso de Estudio: Los Andes Market
+# MAGIC
+# MAGIC **Dataset**:
+# MAGIC * 5 sucursales en Mendoza: Centro, Las Heras, Guaymallén, Godoy Cruz, Maipú
+# MAGIC * 60 meses de datos (2019-2024)
+# MAGIC * Features temporales: lags, rolling stats, diferencias, variables cíclicas
+# MAGIC * Features geoespaciales: índices H3, distancia al centro, densidad
+# MAGIC
+# MAGIC ### Hipótesis a Validar:
+# MAGIC
+# MAGIC **H1**: LSTM reduce MAPE en >20% vs RNN vanilla  
+# MAGIC **H2**: Features H3 mejoran precisión en sucursales periféricas  
+# MAGIC **H3**: Modelos bi-direccionales mejoran forecast en series con alta estacionalidad
 
 # COMMAND ----------
 

@@ -3,44 +3,60 @@
 # MAGIC %md
 # MAGIC # 🚨 Detección de Anomalías en Series Temporales Multi-Sucursal
 # MAGIC
-# MAGIC ## Identificación Automática de Patrones Anómalos Georeferenciados
+# MAGIC ## Caso de Estudio: Sistema de Alertas para Los Andes Market 🏔️
 # MAGIC
-# MAGIC ### Objetivos
+# MAGIC ### Contexto de Investigación
 # MAGIC
-# MAGIC * Detectar comportamientos inusuales en ventas por sucursal en Mendoza
-# MAGIC * Usar LSTM Autoencoder para aprendizaje no supervisado
-# MAGIC * Generar alertas automáticas de anomalías por ubicación
-# MAGIC * Identificar causas raíz de desviaciones (por zona/sucursal)
-# MAGIC * Análisis espacial de anomalías con índices H3
+# MAGIC Este notebook demuestra la aplicación de **LSTM Autoencoders** para detección de anomalías en series temporales georeferenciadas. Extendemos la investigación de arquitecturas RNN a un caso de uso de **aprendizaje no supervisado**, identificando patrones anómalos en ventas de **Los Andes Market** sin necesidad de datos etiquetados.
 # MAGIC
-# MAGIC ### ¿Qué es una Anomalía?
+# MAGIC ### Objetivos Científicos:
 # MAGIC
-# MAGIC Una **anomalía** es un punto de datos que se desvía significativamente del patrón esperado.
+# MAGIC 1. **LSTM Autoencoder para Series Temporales**
+# MAGIC    * Arquitectura encoder-decoder con capas LSTM
+# MAGIC    * Aprendizaje de representaciones latentes
+# MAGIC    * Error de reconstrucción como proxy de anomalía
 # MAGIC
-# MAGIC ### Casos de uso en retail multi-sucursal:
+# MAGIC 2. **Detección Multi-Sucursal**
+# MAGIC    * Modelo por sucursal vs modelo único
+# MAGIC    * Umbrales dinámicos por zona geográfica
+# MAGIC    * Análisis de patrones normales por ubicación (H3)
 # MAGIC
-# MAGIC 📉 **Ventas**: Caídas o picos inesperados por sucursal
-# MAGIC 🗺️ **Espacial**: Desviaciones por zona geográfica
-# MAGIC 📦 **Operaciones**: Problemas logísticos localizados
-# MAGIC 🏗️ **Eventos locales**: Impacto de obras, eventos, etc.
-# MAGIC 🔧 **Infraestructura**: Problemas en sucursales específicas
+# MAGIC 3. **Interpretabilidad**
+# MAGIC    * Identificación de causas raíz de anomalías
+# MAGIC    * Clustering de anomalías por tipo
+# MAGIC    * Correlación espacial (zonas vecinas afectadas)
 # MAGIC
-# MAGIC ### Técnica: LSTM Autoencoder
+# MAGIC 4. **Sistema de Alertas**
+# MAGIC    * Detección en tiempo real vs batch
+# MAGIC    * Priorización de alertas por severidad
+# MAGIC    * Visualización con mapas H3
 # MAGIC
-# MAGIC **Autoencoder** = Red neuronal que aprende a reconstruir su entrada
+# MAGIC ### Caso de Estudio: Los Andes Market
 # MAGIC
-# MAGIC ```
-# MAGIC Input → Encoder (compresión) → Latent Space → Decoder (reconstrucción) → Output
-# MAGIC ```
+# MAGIC **Problema**: Detectar comportamientos anómalos en ventas de 5 sucursales que puedan indicar:
+# MAGIC * Problemas operacionales (fallas en sistemas, falta de personal)
+# MAGIC * Eventos externos (obras, competencia nueva, clima extremo)
+# MAGIC * Oportunidades (demanda inesperada, eventos locales)
+# MAGIC * Fraude o errores en registros
 # MAGIC
-# MAGIC * Si el modelo reconstruye bien = dato **normal**
-# MAGIC * Si el error de reconstrucción es alto = dato **anómalo**
+# MAGIC **Técnica**: LSTM Autoencoder no supervisado
+# MAGIC * **Entrada**: Secuencias de 12 meses con features temporales + geoespaciales
+# MAGIC * **Latent space**: Compresión a 8 dimensiones
+# MAGIC * **Umbral**: Percentil 95 del error de reconstrucción
 # MAGIC
-# MAGIC ### 🗺️ Dataset: 5 Sucursales en Mendoza
+# MAGIC ### Tipos de Anomalías Detectables:
 # MAGIC
-# MAGIC * Detectaremos anomalías en cada sucursal
-# MAGIC * Compararemos patrones entre zonas (Centro, Residencial, Comercial)
-# MAGIC * Usaremos H3 para análisis de vecindario
+# MAGIC 📉 **Ventas inesperadamente bajas** (caída >2σ)
+# MAGIC 📈 **Ventas inesperadamente altas** (pico >2σ)
+# MAGIC 🗺️ **Anomalías localizadas** (solo en ciertas zonas)
+# MAGIC 🔄 **Cambios de patrón** (estacionalidad alterada)
+# MAGIC 🐞 **Outliers temporales** (eventos puntuales)
+# MAGIC
+# MAGIC ### Validación:
+# MAGIC
+# MAGIC * **Precision/Recall**: Comparación con anomalías conocidas (eventos históricos)
+# MAGIC * **Inspección manual**: Validación de top anomalías
+# MAGIC * **Consistencia geográfica**: Anomalías en sucursales cercanas (H3)
 
 # COMMAND ----------
 

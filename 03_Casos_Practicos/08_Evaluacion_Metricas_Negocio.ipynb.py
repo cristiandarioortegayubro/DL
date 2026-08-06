@@ -3,47 +3,74 @@
 # MAGIC %md
 # MAGIC # 🎯 Evaluación y Métricas de Negocio para Modelos Multi-Sucursal
 # MAGIC
-# MAGIC ## Framework Completo de Evaluación Geoespacial
+# MAGIC ## Investigación: Framework de Evaluación Riguroso y Orientado a Negocio
 # MAGIC
-# MAGIC ### Objetivos
+# MAGIC ### Contexto de Investigación
 # MAGIC
-# MAGIC * Entender la diferencia entre métricas técnicas y de negocio
-# MAGIC * Implementar backtesting riguroso por sucursal/zona
-# MAGIC * Calcular métricas avanzadas (MAPE, SMAPE, MASE, Forecast Bias)
-# MAGIC * Evaluar valor económico del modelo por ubicación
-# MAGIC * Crear dashboard ejecutivo de performance geográfica
-# MAGIC * Comparar performance entre zonas de Mendoza
+# MAGIC Este notebook cierra el ciclo de investigación con una **evaluación científica rigurosa** de los modelos RNN/LSTM/GRU entrenados para pronóstico de series temporales en **Los Andes Market** 🏔️. Trasciende métricas técnicas estándar para cuantificar el **valor de negocio** y la **aplicabilidad práctica** de cada arquitectura.
 # MAGIC
-# MAGIC ### ¿Por qué es importante?
+# MAGIC ### Objetivos Científicos:
 # MAGIC
-# MAGIC 📊 **Métricas técnicas** (MAE, RMSE, R²):
-# MAGIC * Útiles para comparar modelos
-# MAGIC * Difíciles de interpretar para stakeholders
-# MAGIC * No capturan impacto de negocio
+# MAGIC 1. **Evaluación Multi-Dimensional**
+# MAGIC    * Métricas técnicas: MAE, RMSE, MAPE, SMAPE, MASE, R²
+# MAGIC    * Métricas de negocio: ROI, costo de error, mejora vs baseline
+# MAGIC    * Análisis por sucursal, zona geográfica (H3), y estacionalidad
 # MAGIC
-# MAGIC 💰 **Métricas de negocio**:
-# MAGIC * Traducen performance a valor económico
-# MAGIC * Facilitan decisiones de inversión
-# MAGIC * Alinean IA con objetivos empresariales
+# MAGIC 2. **Backtesting Riguroso**
+# MAGIC    * Validación temporal sin data leakage
+# MAGIC    * Rolling origin evaluation (múltiples horizontes)
+# MAGIC    * Intervalos de confianza y significancia estadarística
 # MAGIC
-# MAGIC 🗺️ **Dimensión espacial**:
-# MAGIC * Performance varía por zona geográfica
-# MAGIC * Identificar sucursales con mejores predicciones
-# MAGIC * Optimizar estrategias por ubicación
+# MAGIC 3. **Análisis de Sesgos**
+# MAGIC    * Forecast bias (sobre/subestimación sistemática)
+# MAGIC    * Consistencia temporal (degradación con horizonte)
+# MAGIC    * Equidad geográfica (performance por zona)
 # MAGIC
-# MAGIC ### Framework de Evaluación
+# MAGIC 4. **Interpretabilidad y Explicabilidad**
+# MAGIC    * Identificación de errores por patrón (estacional, tendencial)
+# MAGIC    * Feature importance (SHAP para modelos baseline)
+# MAGIC    * Visualización de residuos geoespaciales
 # MAGIC
-# MAGIC 1. **Métricas de Error**: MAE, RMSE, MAPE, SMAPE, MASE (global y por sucursal)
-# MAGIC 2. **Backtesting**: Validación temporal robusta por zona
-# MAGIC 3. **Forecast Bias**: ¿El modelo sobre/subestima sistemáticamente por ubicación?
-# MAGIC 4. **Intervalos de Confianza**: Cuantificar incertidumbre espacial
-# MAGIC 5. **Valor Económico**: ROI, ahorro, mejora vs baseline por sucursal
+# MAGIC 5. **Valor Económico**
+# MAGIC    * ROI del modelo vs métodos clásicos
+# MAGIC    * Reducción de costos de inventario
+# MAGIC    * Mejora en nivel de servicio (fill rate)
 # MAGIC
-# MAGIC ### 🗺️ Dataset: 5 Sucursales en Mendoza
+# MAGIC ### Caso de Estudio: Los Andes Market
 # MAGIC
-# MAGIC * Evaluaremos modelos en cada sucursal
-# MAGIC * Compararemos performance entre zonas
-# MAGIC * Identificaremos patrones espaciales en errores
+# MAGIC **Pregunta de Investigación Central**:  
+# MAGIC ¿Justifica la inversión en modelos LSTM/GRU vs métodos clásicos (ARIMA, Exponential Smoothing) o modelos árbol (GBT) para este caso de uso?
+# MAGIC
+# MAGIC **Comparación de Arquitecturas**:
+# MAGIC * RNN vanilla
+# MAGIC * LSTM (1 capa, 2 capas, bidireccional)
+# MAGIC * GRU (1 capa, 2 capas)
+# MAGIC * Baselines: ARIMA, Prophet, Gradient Boosting
+# MAGIC
+# MAGIC **Dimensiones de Análisis**:
+# MAGIC * **Global**: Performance agregada en todas las sucursales
+# MAGIC * **Por sucursal**: Centro, Las Heras, Guaymallén, Godoy Cruz, Maipú
+# MAGIC * **Por zona H3**: Clustering de performance espacial
+# MAGIC * **Por estacionalidad**: Vendimia, fiestas, temporada baja
+# MAGIC
+# MAGIC ### Métricas Priorizadas:
+# MAGIC
+# MAGIC **Para Publicación Académica**:
+# MAGIC * MAE, RMSE (comparables entre estudios)
+# MAGIC * MAPE (interpretable, industria-standard)
+# MAGIC * MASE (robusto a escalas)
+# MAGIC
+# MAGIC **Para Stakeholders de Negocio**:
+# MAGIC * Mejora % vs baseline
+# MAGIC * Costo evitado por quiebres de stock
+# MAGIC * ROI proyectado a 12 meses
+# MAGIC
+# MAGIC ### Hipótesis a Validar:
+# MAGIC
+# MAGIC **H1**: LSTM reduce MAPE en >20% vs ARIMA (series NO estacionarias)  
+# MAGIC **H2**: Features H3 mejoran precisión en sucursales periféricas  
+# MAGIC **H3**: Modelos profundos capturan mejor estacionalidad compleja  
+# MAGIC **H4**: ROI de LSTM es positivo en horizonte de 6 meses
 
 # COMMAND ----------
 

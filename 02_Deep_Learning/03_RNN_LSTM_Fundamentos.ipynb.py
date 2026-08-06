@@ -3,30 +3,42 @@
 # MAGIC %md
 # MAGIC # 🧠 Fundamentos de Redes Neuronales Recurrentes (RNN) y LSTM
 # MAGIC
-# MAGIC ## Deep Learning para Series Temporales
+# MAGIC ## Investigación: Deep Learning para Series Temporales Empresariales
 # MAGIC
-# MAGIC ### Objetivos
+# MAGIC ### Contexto de Investigación
 # MAGIC
-# MAGIC * Entender cómo funcionan las RNN y por qué son ideales para secuencias
-# MAGIC * Comprender el problema del **vanishing gradient** en RNN clásicas
-# MAGIC * Conocer la arquitectura LSTM y sus componentes (gates)
-# MAGIC * Implementar un modelo LSTM básico con TensorFlow/Keras
-# MAGIC * Entrenar y evaluar el modelo en datos de ventas
+# MAGIC Este notebook forma parte del estudio científico comparativo de arquitecturas RNN (RNN, LSTM, GRU) para pronóstico de series temporales con datos georeferenciados de **Los Andes Market**, cadena de supermercados regional en Mendoza, Argentina.
 # MAGIC
-# MAGIC ### ¿Qué son las RNN?
+# MAGIC ### Objetivos del Notebook:
 # MAGIC
-# MAGIC Las **Redes Neuronales Recurrentes (RNN)** son arquitecturas de deep learning diseñadas para procesar **datos secuenciales**:
+# MAGIC 1. **Fundamentos Teóricos**
+# MAGIC    * Arquitectura de RNN y propagación temporal
+# MAGIC    * Problema del vanishing/exploding gradient
+# MAGIC    * Arquitectura LSTM: gates y estado de celda
+# MAGIC    * Comparación RNN vs LSTM vs GRU
 # MAGIC
-# MAGIC * **Memoria**: Mantienen información de pasos temporales anteriores
-# MAGIC * **Pesos compartidos**: Usan los mismos pesos en cada paso temporal
-# MAGIC * **Salida variable**: Pueden generar secuencias de cualquier longitud
+# MAGIC 2. **Implementación Práctica**
+# MAGIC    * Construcción de modelos LSTM con TensorFlow/Keras
+# MAGIC    * Entrenamiento con datos de Los Andes Market
+# MAGIC    * Evaluación de performance (MAE, RMSE, MAPE)
 # MAGIC
-# MAGIC **Aplicaciones en Negocios**:
-# MAGIC * Predicción de ventas/demanda
-# MAGIC * Análisis de sentimiento en redes sociales
-# MAGIC * Detección de fraude en transacciones
-# MAGIC * Recomendaciones personalizadas
-# MAGIC * Forecasting financiero
+# MAGIC 3. **Aportación Científica**
+# MAGIC    * Comparación empírica de arquitecturas
+# MAGIC    * Análisis de hiperparámetros
+# MAGIC    * Validación con datos reales georeferenciados
+# MAGIC
+# MAGIC ### Caso de Estudio: Los Andes Market 🏔️
+# MAGIC
+# MAGIC **Datos**: 5 años de ventas mensuales de 5 sucursales en Mendoza
+# MAGIC * Componente temporal: tendencia + estacionalidad argentina
+# MAGIC * Componente geoespacial: índices H3, zonas comerciales
+# MAGIC * Series NO estacionarias (ventaja de LSTM sobre métodos clásicos)
+# MAGIC
+# MAGIC ### Hipótesis de Investigación:
+# MAGIC
+# MAGIC **H1**: LSTM supera a RNN vanilla en series con memoria larga (estacionalidad anual)  
+# MAGIC **H2**: Features geoespaciales (H3) mejoran precisión del forecast  
+# MAGIC **H3**: Arquitecturas profundas (2+ capas LSTM) capturan mejor patrones complejos
 
 # COMMAND ----------
 

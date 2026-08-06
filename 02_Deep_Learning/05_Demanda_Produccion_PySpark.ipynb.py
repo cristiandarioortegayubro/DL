@@ -3,44 +3,62 @@
 # MAGIC %md
 # MAGIC # ⚡ Análisis de Demanda con PySpark ML
 # MAGIC
-# MAGIC ## Procesamiento Distribuido de Series Temporales Georeferenciadas
+# MAGIC ## Investigación: Procesamiento Distribuido de Series Temporales Georeferenciadas
 # MAGIC
-# MAGIC ### Objetivos
+# MAGIC ### Contexto de Investigación
 # MAGIC
-# MAGIC * Procesar series temporales georeferenciadas a gran escala con PySpark
-# MAGIC * Usar PySpark ML para feature engineering distribuido (temporal + espacial H3)
-# MAGIC * Implementar modelo de forecasting con Spark MLlib
-# MAGIC * Integrar con Delta Lake para datos con índices H3
-# MAGIC * Comparar con enfoque TensorFlow/LSTM
-# MAGIC * Procesar múltiples sucursales simultáneamente
+# MAGIC Este notebook explora la **escalabilidad** del pronóstico de series temporales con features geoespaciales usando **PySpark MLlib**. Forma parte del estudio comparativo de arquitecturas RNN con datos de **Los Andes Market** 🏔️, demostrando cómo manejar múltiples series simultáneamente en un entorno distribuido.
 # MAGIC
-# MAGIC ### ¿Cuándo usar PySpark?
+# MAGIC ### Objetivos Científicos:
 # MAGIC
-# MAGIC ✅ **Ideal para**:
-# MAGIC * Múltiples series temporales simultáneas (ej: ventas por sucursal/zona/producto)
-# MAGIC * Datos georeferenciados que no caben en memoria de un solo nodo
-# MAGIC * Integración con lakehouse (Delta Lake + H3)
-# MAGIC * Pipelines de producción escalables
-# MAGIC * Feature engineering distribuido (temporal + espacial)
-# MAGIC * Análisis de vecindario con H3
+# MAGIC 1. **Feature Engineering Distribuido**
+# MAGIC    * Procesamiento paralelo de 5 sucursales simultáneas
+# MAGIC    * Features temporales con ventanas móviles (Spark Window Functions)
+# MAGIC    * Features espaciales H3 agregados por vecindario
+# MAGIC    * Integración con Delta Lake para reproducibilidad
 # MAGIC
-# MAGIC ❌ **NO ideal para**:
-# MAGIC * Modelos de deep learning complejos (usar TensorFlow/PyTorch)
-# MAGIC * Series temporales muy largas individuales
-# MAGIC * Experimentación rápida (pandas es más ágil)
+# MAGIC 2. **Modelos ML Tradicionales vs Deep Learning**
+# MAGIC    * Gradient Boosting Trees (Spark MLlib)
+# MAGIC    * Random Forest distribuido
+# MAGIC    * Comparación de performance vs LSTM/GRU
+# MAGIC    * Análisis de trade-offs: escalabilidad vs precisión
+# MAGIC
+# MAGIC 3. **Pipeline de Producción**
+# MAGIC    * Arquitectura lakehouse: Delta Lake + H3
+# MAGIC    * Feature store distribuido
+# MAGIC    * Batch predictions a escala
+# MAGIC    * Monitoreo de data drift por zona
+# MAGIC
+# MAGIC ### Caso de Estudio: Los Andes Market
+# MAGIC
+# MAGIC **Dataset**:
+# MAGIC * 5 sucursales georeferenciadas en Mendoza
+# MAGIC * 300 registros (60 meses × 5 ubicaciones)
+# MAGIC * Features temporales + espaciales H3
+# MAGIC * Split temporal 70/15/15
+# MAGIC
+# MAGIC ### ¿Cuándo usar PySpark vs TensorFlow?
+# MAGIC
+# MAGIC ✅ **PySpark ideal para**:
+# MAGIC * Múltiples series (100s-1000s de sucursales/productos)
+# MAGIC * Feature engineering a escala (TB de datos)
+# MAGIC * Inferencia batch distribuida
+# MAGIC * Modelos árboles (GBT, RF) + regresión lineal
+# MAGIC
+# MAGIC ✅ **TensorFlow/LSTM ideal para**:
+# MAGIC * Series individuales complejas
+# MAGIC * Patrones no lineales de largo plazo
+# MAGIC * Modelos estado del arte (Transformers, attention)
 # MAGIC
 # MAGIC ### Arquitectura del Pipeline
 # MAGIC
 # MAGIC ```
-# MAGIC Delta Lake (ventas_mensuales_mendoza_h3) → PySpark DataFrame → 
-# MAGIC Feature Engineering (temporal + H3) → Model Training → 
-# MAGIC Predictions → Delta Lake
+# MAGIC Delta Lake (ventas_mensuales_mendoza_h3) → 
+# MAGIC PySpark Feature Engineering (temporal + H3) → 
+# MAGIC MLlib Model Training (GBT/RF) → 
+# MAGIC Batch Predictions → 
+# MAGIC Delta Lake (forecasts)
 # MAGIC ```
-# MAGIC
-# MAGIC ### 🗺️ Dataset: 5 Sucursales Reales en Mendoza
-# MAGIC
-# MAGIC * Centro Comercial, Las Heras, Guaymallén, Godoy Cruz, Maipú
-# MAGIC * Con índices H3 (res 9/8/7), zona, distancia al centro
 
 # COMMAND ----------
 

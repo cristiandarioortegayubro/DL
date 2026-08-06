@@ -91,13 +91,48 @@ El marco teórico se centra en la aplicación de las **Redes Neuronales Recurren
 ### Diseño Experimental
 
 1. **Generación de datos** sintéticos georeferenciados (5 sucursales, 60 meses)
-2. **Preprocesamiento** y feature engineering
-3. **División temporal**: Train (70%), Validation (15%), Test (15%)
-4. **Desarrollo de modelos**: Baseline, RNN, LSTM, GRU
-5. **Búsqueda de hiperparámetros**
-6. **Evaluación**: MAE, RMSE, MAPE, R²
-7. **Análisis comparativo** y pruebas estadísticas
-8. **Validación cruzada temporal**
+2. **Análisis exploratorio riguroso**:
+   - Descomposición de componentes (tendencia, estacionalidad, ruido)
+   - Tests de estacionariedad (Augmented Dickey-Fuller, KPSS)
+   - Análisis de correlación espacial entre sucursales
+   - Validación de hipótesis sobre factores macro/micro
+3. **Feature engineering** científico:
+   - Features temporales: lags, rolling statistics, componentes cíclicos (sin/cos)
+   - Features geoespaciales: distancias Haversine, densidad H3, clustering espacial
+   - Preprocesamiento: imputación, normalización por sucursal
+4. **División temporal estricta**: Train (70%), Validation (15%), Test (15%)
+5. **Desarrollo de modelos**: Baseline, RNN, LSTM, GRU
+6. **Búsqueda de hiperparámetros** con validación científica
+7. **Evaluación**: MAE, RMSE, MAPE, R²
+8. **Análisis comparativo** y pruebas estadísticas
+9. **Validación cruzada temporal**
+
+### Rigor Científico y Reproducibilidad
+
+#### 📐 Estándares de Código
+* Documentación exhaustiva con justificación teórica
+* Seed fijo para reproducibilidad (np.random.seed=42)
+* Código modular y reutilizable
+* Comentarios académicos explicando decisiones metodológicas
+
+#### 🔬 Validación Estadística
+* **Tests de estacionariedad**:
+  - Augmented Dickey-Fuller (ADF) para detectar raíces unitarias
+  - KPSS (Kwiatkowski-Phillips-Schmidt-Shin) para confirmar estacionariedad
+  - Interpretación: series no estacionarias requieren RNN/LSTM vs ARIMA
+* **Análisis de correlación espacial**:
+  - Correlación de Pearson entre series de sucursales (r > 0.85)
+  - Validación de hipótesis: factores macro/micro afectan todas las sucursales
+* **Análisis geoespacial**:
+  - Distancias Haversine entre sucursales
+  - Densidad H3 (conteo de hexágonos en vecindario)
+  - Clustering espacial por zona comercial
+
+#### 📊 Conclusiones Científicas en Cada Notebook
+* Resumen ejecutivo de hallazgos
+* Interpretación estadística rigurosa
+* Implicaciones para el negocio
+* Limitaciones y trabajo futuro
 
 ### Caso de Estudio: **Los Andes Market**
 
@@ -176,20 +211,52 @@ DL/
 
 ### 📘 Módulo 1: Fundamentos
 
-#### **01_Introduccion_Series_Temporales.ipynb**
-* Conceptos básicos de series temporales
-* Generación de datos sintéticos georeferenciados
-* Mapa interactivo con Folium y hexágonos H3
-* Descomposición: tendencia, estacionalidad, ruido
-* Análisis estadístico por sucursal y zona
-* Exportación a Delta Lake
+#### **01_Introduccion_Series_Temporales.ipynb** - 🔬 ANÁLISIS EXPLORATORIO CIENTÍFICO
+* **Contexto empresarial riguroso**: Los Andes Market, Mendoza, Argentina
+* **Objetivos de investigación** claros y problemática bien definida
+* **Generación de datos georeferenciados** con fundamentación teórica:
+  - 5 sucursales con coordenadas GPS reales
+  - Índices H3 (res 7, 8, 9) para análisis espacial
+  - Factores de ubicación basados en zonas comerciales
+* **Mapa interactivo profesional** con Folium y hexágonos H3
+* **Descomposición científica de componentes**:
+  - Tendencia: crecimiento sostenido validado estadísticamente
+  - Estacionalidad: patrones argentinos (vendimia, fiestas)
+  - Residuos: análisis de ruido y factores no modelados
+* **Tests de estacionariedad**:
+  - Augmented Dickey-Fuller (ADF): p-values, estadísticos
+  - KPSS: confirmación de no-estacionariedad
+  - Interpretación: justifica RNN/LSTM sobre modelos clásicos
+* **Análisis de correlación espacial**:
+  - Matriz de correlación entre sucursales (r > 0.85)
+  - Heatmaps y análisis visual
+  - Validación de hipótesis: factores macro afectan todas las sucursales
+* **Análisis estadístico robusto** por sucursal y zona
+* **Conclusiones científicas** y recomendaciones para siguiente fase
+* **Exportación a Delta Lake** con metadatos completos
 
-#### **02_Preparacion_Datos_Empresariales.ipynb**
-* Feature engineering espacial y temporal
-* Lags y rolling windows
-* Normalización y escalado
-* Creación de sequences para LSTM
-* División train/validation/test temporal
+#### **02_Preparacion_Datos_Empresariales.ipynb** - 🛠️ FEATURE ENGINEERING CIENTÍFICO
+* **Pipeline end-to-end completo** para deep learning
+* **Features temporales avanzadas**:
+  - Lags múltiples (1, 3, 6, 12 meses) con justificación teórica
+  - Rolling statistics (media, std, min, max) con ventanas optimizadas
+  - Componentes cíclicos (sin/cos) para capturar estacionalidad
+* **Features geoespaciales H3**:
+  - Distancias Haversine entre sucursales y centro comercial
+  - Densidad H3: conteo de sucursales en vecindario hexagonal
+  - Clustering espacial por zona (Centro, Norte, Sur, Suburbano)
+* **Preprocesamiento riguroso**:
+  - Imputación de valores faltantes con métodos justificados
+  - Normalización por sucursal (StandardScaler)
+  - Manejo de outliers con criterio estadístico
+* **Creación de secuencias para RNN/LSTM**:
+  - Ventana temporal optimizada (lookback=12 meses)
+  - Estructura 3D: (samples, timesteps, features)
+* **División temporal estricta**: Train (70%), Validation (15%), Test (15%)
+  - Sin data leakage
+  - Respeto de orden temporal
+* **Artefactos persistidos**: arrays numpy, scalers, metadata
+* **Conclusiones científicas** y preparación para fase de modelado
 
 ### 🧠 Módulo 2: Deep Learning
 

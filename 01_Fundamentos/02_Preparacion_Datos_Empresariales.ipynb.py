@@ -1,26 +1,54 @@
 # Databricks notebook source
 # DBTITLE 1,Introducción
 # MAGIC %md
-# MAGIC # 🛠️ Preparación de Datos para Deep Learning
+# MAGIC # 🔧 Preparación de Datos para Deep Learning
 # MAGIC
-# MAGIC ## Feature Engineering para Series Temporales
+# MAGIC ## Feature Engineering para Series Temporales Multivariadas
 # MAGIC
-# MAGIC ### Objetivos
+# MAGIC ### Contexto de Investigación
 # MAGIC
-# MAGIC * Cargar y explorar datos de ventas
-# MAGIC * Crear características temporales (features)
-# MAGIC * Normalizar datos para redes neuronales
-# MAGIC * Generar ventanas temporales (sequences) para LSTM
-# MAGIC * Dividir correctamente en train/validation/test
+# MAGIC Este notebook implementa el **pipeline de preparación de datos** para el estudio comparativo de arquitecturas RNN (RNN, LSTM, GRU) en pronóstico de series temporales empresariales. Trabajamos con datos reales georeferenciados de **Los Andes Market** 🏔️ (5 sucursales en Mendoza, Argentina).
 # MAGIC
-# MAGIC ### ¿Por qué es importante?
+# MAGIC ### Objetivos del Notebook:
 # MAGIC
-# MAGIC Las redes neuronales recurrentes (LSTM) requieren:
+# MAGIC 1. **Feature Engineering Temporal**
+# MAGIC    * Lags (valores pasados: t-1, t-2, ..., t-12)
+# MAGIC    * Rolling statistics (media móvil, desviación estándar)
+# MAGIC    * Diferencias y tasas de crecimiento
+# MAGIC    * Variables cíclicas (mes, trimestre)
 # MAGIC
-# MAGIC 1. **Datos normalizados**: valores en rango [0,1] o [-1,1]
-# MAGIC 2. **Secuencias**: ventanas de tiempo con formato (samples, timesteps, features)
-# MAGIC 3. **División temporal**: respetar el orden cronológico (NO shuffle aleatorio)
-# MAGIC 4. **Features relevantes**: extraer información útil del tiempo
+# MAGIC 2. **Feature Engineering Geoespacial**
+# MAGIC    * Distancias geográficas (Haversine)
+# MAGIC    * Densidad de sucursales por hexágono H3
+# MAGIC    * Features de zona comercial
+# MAGIC
+# MAGIC 3. **Normalización y Escalado**
+# MAGIC    * MinMaxScaler para features numéricos
+# MAGIC    * Análisis de distribuciones
+# MAGIC
+# MAGIC 4. **Creación de Secuencias**
+# MAGIC    * Ventanas temporales (lookback window = 12 meses)
+# MAGIC    * Formato 3D para RNNs: (samples, timesteps, features)
+# MAGIC
+# MAGIC 5. **División Temporal**
+# MAGIC    * Train: 70% (primeros 42 meses)
+# MAGIC    * Validation: 15% (siguientes 9 meses)
+# MAGIC    * Test: 15% (últimos 9 meses)
+# MAGIC    * **Respetando orden temporal** (sin shuffle)
+# MAGIC
+# MAGIC ### 📊 Datos de Entrada:
+# MAGIC
+# MAGIC * **Tabla Delta**: `ventas_mensuales_mendoza_h3`
+# MAGIC * **Período**: 2019-2024 (60 meses)
+# MAGIC * **Sucursales**: 5 (georeferenciadas)
+# MAGIC * **Registros**: 300 (60 meses × 5 sucursales)
+# MAGIC
+# MAGIC ### Contribución Científica:
+# MAGIC
+# MAGIC Este pipeline es **reproducible** y demuestra:
+# MAGIC * Ventaja de RNN sobre métodos clásicos (series NO estacionarias)
+# MAGIC * Incorporación de H3 (indexación geoespacial hexagonal) como feature
+# MAGIC * Validación temporal sin data leakage
 
 # COMMAND ----------
 

@@ -3,35 +3,53 @@
 # MAGIC %md
 # MAGIC # 📦 Análisis de Inventario Multi-Sucursal con ML
 # MAGIC
-# MAGIC ## Optimización de Stock Georeferenciado con Deep Learning
+# MAGIC ## Caso de Estudio: Optimización de Stock en Los Andes Market 🏔️
 # MAGIC
-# MAGIC ### Objetivos
+# MAGIC ### Contexto de Investigación
 # MAGIC
-# MAGIC * Predecir demanda futura para múltiples sucursales en Mendoza
-# MAGIC * Calcular punto de reorden inteligente por ubicación
-# MAGIC * Estimar safety stock óptimo considerando zona geográfica
-# MAGIC * Identificar sucursales con riesgo de quiebre de stock
-# MAGIC * Visualizar niveles de inventario recomendados con mapas H3
-# MAGIC * Optimizar distribución geográfica de stock
+# MAGIC Este notebook aplica los modelos RNN entrenados a un **problema empresarial real**: optimización de inventario multi-sucursal con componente geoespacial. Demostramos cómo el forecast basado en LSTM/GRU puede mejorar la gestión de stock considerando patrones locales de demanda.
 # MAGIC
-# MAGIC ### Problema de Negocio
+# MAGIC ### Objetivos Empresariales:
 # MAGIC
-# MAGIC 🚨 **Desafíos comunes en retail multi-sucursal**:
-# MAGIC * Exceso de inventario → Capital inmovilizado, costos de almacenamiento
-# MAGIC * Falta de stock → Pérdida de ventas, clientes insatisfechos
-# MAGIC * Variabilidad de demanda por zona → Difícil planificar con métodos tradicionales
-# MAGIC * Distribución ineficiente entre sucursales
+# MAGIC 1. **Predicción de Demanda Georeferenciada**
+# MAGIC    * Forecast a 1-3 meses por sucursal
+# MAGIC    * Intervalo de confianza basado en varianza histórica
+# MAGIC    * Ajuste por estacionalidad argentina (vendimia, fiestas)
 # MAGIC
-# MAGIC 🎯 **Solución con ML + H3**:
-# MAGIC * Predicciones precisas considerando estacionalidad Y ubicación
-# MAGIC * Safety stock dinámico basado en zona geográfica
-# MAGIC * Alertas tempranas de quiebre de stock por sucursal
-# MAGIC * Optimización de transferencias entre sucursales cercanas (H3)
+# MAGIC 2. **Cálculo de Parámetros de Inventario**
+# MAGIC    * Punto de reorden dinámico por ubicación
+# MAGIC    * Safety stock considerando zona geográfica (H3)
+# MAGIC    * Stock máximo óptimo (evitar sobre-inventario)
 # MAGIC
-# MAGIC ### 🗺️ Dataset: 5 Sucursales en Mendoza
+# MAGIC 3. **Análisis de Riesgo**
+# MAGIC    * Probabilidad de quiebre de stock por sucursal
+# MAGIC    * Identificación de productos críticos
+# MAGIC    * Alertas tempranas basadas en forecast
 # MAGIC
-# MAGIC * Centro, Las Heras, Guaymallén, Godoy Cruz, Maipú
-# MAGIC * Con índices H3 para análisis de vecindario
+# MAGIC 4. **Optimización Espacial**
+# MAGIC    * Transferencias inteligentes entre sucursales cercanas (H3)
+# MAGIC    * Balanceo de inventario por zona comercial
+# MAGIC    * Visualización con mapas interactivos
+# MAGIC
+# MAGIC ### Caso de Estudio: Los Andes Market
+# MAGIC
+# MAGIC **Empresa**: Cadena regional de supermercados en Mendoza, Argentina  
+# MAGIC **Desafío**: Optimizar inventario en 5 sucursales con diferentes perfiles de demanda  
+# MAGIC **Solución**: Forecast LSTM + features geoespaciales H3 + políticas de inventario dinámicas
+# MAGIC
+# MAGIC **Sucursales**:
+# MAGIC * Centro - San Martín (zona comercial de alto tráfico)
+# MAGIC * Las Heras (residencial norte)
+# MAGIC * Guaymallén (corredor comercial)
+# MAGIC * Godoy Cruz (zona sur)
+# MAGIC * Maipú (suburbano)
+# MAGIC
+# MAGIC ### Métricas de Éxito:
+# MAGIC
+# MAGIC * **Reducción de quiebres de stock**: >30% vs baseline
+# MAGIC * **Reducción de inventario promedio**: >15% sin afectar servicio
+# MAGIC * **Mejora en fill rate**: >95% en todas las sucursales
+# MAGIC * **ROI**: Positivo en 6 meses
 
 # COMMAND ----------
 
