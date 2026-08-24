@@ -173,8 +173,9 @@ DL/
 ├── 03_Casos_Practicos/
 │   ├── 05_Analisis_Inventario_Multiproducto.ipynb
 │   ├── 06_Deteccion_Anomalias_Negocio.ipynb
-│   ├── 07_Evaluacion_Metricas_Negocio.ipynb (pendiente renombrar a 08)
-│   └── 09_Comparacion_Modelos_Cientifica.ipynb (actualmente 08, mover y renombrar)
+│   ├── 08_Evaluacion_Metricas_Negocio.ipynb
+│   ├── 09_Comparacion_Modelos_Cientifica.ipynb
+│   └── 10_Paper_Investigacion_Final.ipynb
 │
 └── README.md
 ```
