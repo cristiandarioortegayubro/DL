@@ -167,13 +167,12 @@ DL/
 │
 ├── 02_Deep_Learning/
 │   ├── 03_RNN_LSTM_Fundamentos.ipynb
-│   ├── 04_Prediccion_Ventas_TensorFlow.ipynb
-│   └── 05_Demanda_Produccion_PySpark.ipynb
+│   └── 04_Demanda_Produccion_PySpark.ipynb
 │
 ├── 03_Casos_Practicos/
-│   ├── 06_Analisis_Inventario_Multiproducto.ipynb
-│   ├── 07_Deteccion_Anomalias_Negocio.ipynb
-│   └── 08_Evaluacion_Metricas_Negocio.ipynb
+│   ├── 05_Analisis_Inventario_Multiproducto.ipynb
+│   ├── 06_Deteccion_Anomalias_Negocio.ipynb
+│   └── 07_Evaluacion_Metricas_Negocio.ipynb
 │
 └── README.md
 ```
