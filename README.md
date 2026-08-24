@@ -167,12 +167,12 @@ DL/
 │
 ├── 02_Deep_Learning/
 │   ├── 03_RNN_LSTM_Fundamentos.ipynb
-│   ├── 03b_Modelos_Tradicionales_Baseline.ipynb
-│   └── 04_Demanda_Produccion_PySpark.ipynb
+│   ├── 04_Modelos_Tradicionales_Baseline.ipynb
+│   └── 05_Demanda_Produccion_PySpark.ipynb
 │
 ├── 03_Casos_Practicos/
-│   ├── 05_Analisis_Inventario_Multiproducto.ipynb
-│   ├── 06_Deteccion_Anomalias_Negocio.ipynb
+│   ├── 06_Analisis_Inventario_Multiproducto.ipynb
+│   ├── 07_Deteccion_Anomalias_Negocio.ipynb
 │   ├── 08_Evaluacion_Metricas_Negocio.ipynb
 │   ├── 09_Comparacion_Modelos_Cientifica.ipynb
 │   └── 10_Paper_Investigacion_Final.ipynb
