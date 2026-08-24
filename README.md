@@ -173,7 +173,9 @@ DL/
 ├── 03_Casos_Practicos/
 │   ├── 06_Analisis_Inventario_Multiproducto.ipynb
 │   ├── 07_Deteccion_Anomalias_Negocio.ipynb
-│   ├── 08_Evaluacion_Metricas_Negocio.ipynb
+│   └── 08_Evaluacion_Metricas_Negocio.ipynb
+│
+├── 04_Conclusiones/
 │   ├── 09_Comparacion_Modelos_Cientifica.ipynb
 │   └── 10_Paper_Investigacion_Final.ipynb
 │
@@ -297,6 +299,22 @@ DL/
 * Análisis de error geográfico
 * Recomendaciones de negocio
 
+### 🎯 Módulo 4: Conclusiones
+
+#### **09_Comparacion_Modelos_Cientifica.ipynb**
+* Comparación rigurosa de 7 modelos
+* Tests estadísticos (paired t-test)
+* Visualizaciones comparativas (MAE, R², MAPE, scatter, heatmap, radar)
+* Análisis de trade-offs (precisión vs complejidad)
+* Validación de hipótesis H1 y H2
+
+#### **10_Paper_Investigacion_Final.ipynb**
+* Paper académico completo
+* Metodología científica rigurosa
+* Resultados experimentales
+* Contribuciones teóricas y prácticas
+* Conclusiones y trabajo futuro
+
 ---
 
 ## 🛠️ Tecnologías Utilizadas
@@ -322,7 +340,7 @@ DL/
 ### 1. Ejecutar en Orden
 Los notebooks están diseñados para ejecutarse secuencialmente:
 ```
-01 → 02 → 03 → 04 → 05 → 06 → 07 → 08
+01 → 02 → 03 → 04 → 05 → 06 → 07 → 08 → 09 → 10
 ```
 
 ### 2. Datos Generados
